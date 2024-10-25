@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15.8
+    restart: always
+    volumes:
+      - "./sql:/docker-entrypoint-initdb.d"
+    environment:
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
+    ports: 
+      - ${POSTGRES_PORT:-5432}
