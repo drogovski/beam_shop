@@ -38,3 +38,18 @@ terraform.rc
 
 
 ./sql
+
+######################### IDE #########################################
+/.vscode
+.elixir_ls/
+
+######################### ELIXIR ######################################
+/_build
+/cover
+/deps
+/doc
+/.fetch
+erl_crash.dump
+*.ez
+*.beam
+/config/*.secret.exs

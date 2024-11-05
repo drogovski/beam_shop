@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  repository_name = "beam-shop"
+  repository_name = "beam_shop"
   github_owner    = "drogovski"
 }
 
@@ -18,7 +18,7 @@ provider "github" {
 
 resource "github_repository" "beam-shop" {
   name                   = local.repository_name
-  description            = "Leveraging BEAM to create online shop."
+  description            = "Leveraging BEAM to create an online shop."
   visibility             = "public"
   has_issues             = true
   auto_init              = true
