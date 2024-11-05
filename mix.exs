@@ -10,6 +10,12 @@ defmodule BeamShop.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
+      dialyzer: [
+        ignore_warnings: ".dialyzer_ignore.exs",
+        plt_core_path: "priv/plts/core.plt",
+        plt_file: {:no_warn, "priv/plts/project.plt"},
+        plt_add_apps: [:ex_unit]
+      ],
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         coveralls: :test,
@@ -56,7 +62,10 @@ defmodule BeamShop.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
       {:excoveralls, "~> 0.18.3"},
-      {:mix_test_watch, "~> 1.2", only: [:dev, :test], runtime: false}
+      {:mix_test_watch, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7"},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -71,7 +80,8 @@ defmodule BeamShop.MixProject do
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      ci: ["format --check-formatted", "credo --strict"]
     ]
   end
 end

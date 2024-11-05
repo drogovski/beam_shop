@@ -53,3 +53,7 @@ erl_crash.dump
 *.ez
 *.beam
 /config/*.secret.exs
+
+######################### DIALYZER ######################################
+/priv/plts/*.plt
+/priv/plts/*.plt.hash
