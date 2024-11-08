@@ -20,5 +20,5 @@ defmodule BeamShopWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :beam_shop
+  use Gettext.Backend, otp_app: :beam_shop
 end
